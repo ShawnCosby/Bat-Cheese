@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BatCheese.Resources;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,19 +11,21 @@ namespace BatCheese.Web.Controllers
     {
         public ActionResult Index()
         {
+            this.ViewBag.TitlePart = Globalized.Home;
+
             return View();
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            this.ViewBag.TitlePart = Globalized.About;
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            this.ViewBag.TitlePart = Globalized.Contact;
 
             return View();
         }
