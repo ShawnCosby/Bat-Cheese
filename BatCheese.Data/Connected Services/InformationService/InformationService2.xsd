@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="AuditLog">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AuditID" type="xs:int" />
+      <xs:element minOccurs="0" name="BatchName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DocID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EntryTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EventName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HostName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SourceName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StatisticsInfo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserAccount" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AuditLog" nillable="true" type="tns:AuditLog" />
+  <xs:complexType name="AuditLogs">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AuditLog" nillable="true" type="tns:AuditLog" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AuditLogs" nillable="true" type="tns:AuditLogs" />
+  <xs:complexType name="ALogs">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Logs" nillable="true" type="tns:AuditLogs" />
+      <xs:element minOccurs="0" name="RecordCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ALogs" nillable="true" type="tns:ALogs" />
+</xs:schema>

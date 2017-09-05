@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://scdev2:8010/ImportService?xsd=xsd1" namespace="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" />
+  <xs:import schemaLocation="http://scdev2:8010/ImportService?xsd=xsd0" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://scdev2:8010/ImportService?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="UpdateBatchImport">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="batchImport" nillable="true" type="q1:BatchImport" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateBatchImportResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllBatchImports">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllBatchImportsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="GetAllBatchImportsResult" nillable="true" type="q2:BatchImports" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBatchImports">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MachineName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBatchImportsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="GetBatchImportsResult" nillable="true" type="q3:BatchImports" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBatchImport">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="JobId" type="q4:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBatchImportResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="GetBatchImportResult" nillable="true" type="q5:BatchImport" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetBatchImportMachineActive">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MachineName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="isActive" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetBatchImportMachineActiveResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetBatchImportLastRun">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="JobId" type="q6:guid" />
+        <xs:element minOccurs="0" name="lastRunDate" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetBatchImportLastRunResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBatchImportUpdateDate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="JobId" type="q7:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBatchImportUpdateDateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetBatchImportUpdateDateResult" nillable="true" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteBatchImport">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="JobId" type="q8:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteBatchImportResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetBatchImportIsRunNow">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="JobId" type="q9:guid" />
+        <xs:element minOccurs="0" name="IsRunNow" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetBatchImportIsRunNowResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBatchImportIsRunNow">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MachineName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBatchImportIsRunNowResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetBatchImportIsRunNowResult" nillable="true" type="q10:ArrayOfguid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetBatchImportError">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="JobId" type="q11:guid" />
+        <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetBatchImportErrorResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBatchImportError">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="JobId" type="q12:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBatchImportErrorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetBatchImportErrorResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetImportHours">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetImportHoursResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="GetImportHoursResult" nillable="true" type="q13:ImportHours" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveImportHour">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="hour" nillable="true" type="q14:ImportHour" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveImportHourResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBranches">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="currentdatetime" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBranchesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="GetBranchesResult" nillable="true" type="q15:Branches" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveBranchConfig">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="branch" nillable="true" type="q16:Branch" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveBranchConfigResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateBranchHealthStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="branch" nillable="true" type="q17:Branch" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateBranchHealthStatusResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddBranch">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="branch" nillable="true" type="q18:Branch" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddBranchResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveBranch">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="branchName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveBranchResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

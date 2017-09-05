@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="bb36fb14-d5cb-4fc7-b811-470ec6c831a1" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://scdev2:8010/CommunicationCachingService" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CommunicationCachingService.xsd" MetadataType="Schema" ID="e6aeccac-1743-4cde-8016-45c5824a043a" SourceId="1" SourceUrl="http://scdev2:8010/CommunicationCachingService?xsd=xsd0" />
+    <MetadataFile FileName="CommunicationCachingService1.xsd" MetadataType="Schema" ID="fa7e5d8d-c062-461f-8f5f-204c1e315011" SourceId="1" SourceUrl="http://scdev2:8010/CommunicationCachingService?xsd=xsd1" />
+    <MetadataFile FileName="CommunicationCachingService2.xsd" MetadataType="Schema" ID="d2a542ca-ec2e-4ecd-b9b2-1dab922a88e0" SourceId="1" SourceUrl="http://scdev2:8010/CommunicationCachingService?xsd=xsd3" />
+    <MetadataFile FileName="CommunicationCachingService3.xsd" MetadataType="Schema" ID="338490c2-2ed4-4456-a9e8-2ea064f79b07" SourceId="1" SourceUrl="http://scdev2:8010/CommunicationCachingService?xsd=xsd2" />
+    <MetadataFile FileName="CommunicationCachingService.wsdl" MetadataType="Wsdl" ID="60be80c9-6a69-4c2e-8549-c36dc7a4ae72" SourceId="1" SourceUrl="http://scdev2:8010/CommunicationCachingService" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

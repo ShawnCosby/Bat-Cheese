@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://scdev2:8010/ImportService?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://scdev2:8010/ImportService?xsd=xsd0" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ImportHours">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ImportHour" nillable="true" type="tns:ImportHour" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ImportHours" nillable="true" type="tns:ImportHours" />
+  <xs:complexType name="ImportHour">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="HourID" type="xs:int" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Hours" nillable="true" type="q1:ArrayOfKeyValueOfstringboolean" />
+      <xs:element minOccurs="0" name="ImportID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ImportHour" nillable="true" type="tns:ImportHour" />
+  <xs:complexType name="Branch">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BatchesInTransit" type="xs:int" />
+      <xs:element minOccurs="0" name="BranchName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HealthInfo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Hours" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="IsSuccess" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastHeartbeatUTC" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="MinutesBetweenHeartbeats" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="SecondsToPauseFor" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="SpeedLimitBytesPerSecond" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Branch" nillable="true" type="tns:Branch" />
+  <xs:complexType name="BatchImports">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BatchImport" nillable="true" type="tns:BatchImport" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BatchImports" nillable="true" type="tns:BatchImports" />
+  <xs:complexType name="BatchImport">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsRunNow" type="xs:boolean" />
+      <xs:element minOccurs="0" name="JobId" type="ser:guid" />
+      <xs:element minOccurs="0" name="JobName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastConfigUpdate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LastRun" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="MachineName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="XmlConfig" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BatchImport" nillable="true" type="tns:BatchImport" />
+  <xs:complexType name="Branches">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Branch" nillable="true" type="tns:Branch" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Branches" nillable="true" type="tns:Branches" />
+</xs:schema>

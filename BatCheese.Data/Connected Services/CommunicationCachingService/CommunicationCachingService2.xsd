@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://scdev2:8010/CommunicationCachingService?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="SchemaDefinition">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SchemaInfo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SiteID" type="ser:guid" />
+      <xs:element minOccurs="0" name="URL" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WebID" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SchemaDefinition" nillable="true" type="tns:SchemaDefinition" />
+</xs:schema>

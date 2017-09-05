@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://scdev2:8010/BatchService?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="ActivityDesigners">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ActivityDesigner" nillable="true" type="tns:ActivityDesigner" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ActivityDesigners" nillable="true" type="tns:ActivityDesigners" />
+  <xs:complexType name="ActivityDesigner">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ProcessDefinition">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ActivityDesigns" nillable="true" type="tns:ActivityDesigns" />
+          <xs:element minOccurs="0" name="IsDeleted" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ActivityDesigner" nillable="true" type="tns:ActivityDesigner" />
+  <xs:complexType name="ProcessDefinition">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DocClassContentType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DocClassLibraryName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DocClassName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DocClassURL" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DocTypeID" type="xs:int" />
+      <xs:element minOccurs="0" name="Priority" type="xs:int" />
+      <xs:element minOccurs="0" name="ProcessName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Repository" nillable="true" type="tns:RepositoryDefinition" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProcessDefinition" nillable="true" type="tns:ProcessDefinition" />
+  <xs:complexType name="RepositoryDefinition">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="repositoryID" type="xs:int" />
+      <xs:element minOccurs="0" name="siteCredentials" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="siteType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="siteUrl" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RepositoryDefinition" nillable="true" type="tns:RepositoryDefinition" />
+  <xs:complexType name="ActivityDesigns">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ActivityDesign" nillable="true" type="tns:ActivityDesign" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ActivityDesigns" nillable="true" type="tns:ActivityDesigns" />
+  <xs:complexType name="ActivityDesign">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ActivityClass" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ActivityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ActivityNumber" type="xs:int" />
+      <xs:element minOccurs="0" name="ActivityProcessID" type="xs:int" />
+      <xs:element minOccurs="0" name="ConfigurationData" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DocTypeID" type="xs:int" />
+      <xs:element minOccurs="0" name="IsDeleted" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MaxRetryCount" type="xs:int" />
+      <xs:element minOccurs="0" name="MinRetryInterval" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ActivityDesign" nillable="true" type="tns:ActivityDesign" />
+  <xs:complexType name="LockedBatches">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LockedBatch" nillable="true" type="tns:LockedBatch" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LockedBatches" nillable="true" type="tns:LockedBatches" />
+  <xs:complexType name="LockedBatch">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BatchName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CachePath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LockTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MachineName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LockedBatch" nillable="true" type="tns:LockedBatch" />
+  <xs:complexType name="TRQueue">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Activity" type="xs:int" />
+      <xs:element minOccurs="0" name="ActivityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BatchName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CachePath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Error" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TRQueue" nillable="true" type="tns:TRQueue" />
+  <xs:complexType name="CSReleaseInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BatchName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CachePath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DestinationCachePath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Domain" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Domain2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsDefaultCredentials" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Locked" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PasswordDest" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UseDestCred" type="xs:boolean" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserNameDest" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WebServiceURL" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CSReleaseInfo" nillable="true" type="tns:CSReleaseInfo" />
+  <xs:complexType name="ActivityRegisters">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ActivityRegister" nillable="true" type="tns:ActivityRegister" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ActivityRegisters" nillable="true" type="tns:ActivityRegisters" />
+  <xs:complexType name="ActivityRegister">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ActivityID" type="xs:int" />
+      <xs:element minOccurs="0" name="Class" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Library" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Machine" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Server" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Type" type="tns:ActivityMode" />
+      <xs:element minOccurs="0" name="Version" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ActivityRegister" nillable="true" type="tns:ActivityRegister" />
+  <xs:simpleType name="ActivityMode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Automatic" />
+      <xs:enumeration value="Manual" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ActivityMode" nillable="true" type="tns:ActivityMode" />
+  <xs:complexType name="DocumentClassMetrics">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DocumentClassMetric" nillable="true" type="tns:DocumentClassMetric" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DocumentClassMetrics" nillable="true" type="tns:DocumentClassMetrics" />
+  <xs:complexType name="DocumentClassMetric">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DocClassName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumberDocs" type="xs:int" />
+      <xs:element minOccurs="0" name="OldestBatch" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DocumentClassMetric" nillable="true" type="tns:DocumentClassMetric" />
+  <xs:complexType name="ActivityDefinitions">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ActivityDefinition" nillable="true" type="tns:ActivityDefinition" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ActivityDefinitions" nillable="true" type="tns:ActivityDefinitions" />
+  <xs:complexType name="ActivityDefinition">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ActivityClass" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ActivityDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ActivityLibrary" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ActivityManual" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ActivityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ActivityNumber" type="xs:int" />
+      <xs:element minOccurs="0" name="ConfigurationData" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DocumentClass" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DocumentClassContentType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DocumentClassLibraryName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DocumentClassURL" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaxRetryCount" type="xs:int" />
+      <xs:element minOccurs="0" name="MinRetryInterval" type="xs:int" />
+      <xs:element minOccurs="0" name="Priority" type="xs:int" />
+      <xs:element minOccurs="0" name="ProcessName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SiteCredentials" nillable="true" type="tns:KLCredential" />
+      <xs:element minOccurs="0" name="SiteType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SiteUrl" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ActivityDefinition" nillable="true" type="tns:ActivityDefinition" />
+  <xs:complexType name="KLCredential">
+    <xs:sequence>
+      <xs:element name="_domain" nillable="true" type="xs:string" />
+      <xs:element name="_isOffice365" type="xs:boolean" />
+      <xs:element name="_password" nillable="true" type="xs:string" />
+      <xs:element name="_userName" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_AdfsUrl_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Type_x003E_k__BackingField" type="tns:CredentialType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="KLCredential" nillable="true" type="tns:KLCredential" />
+  <xs:simpleType name="CredentialType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unknown" />
+      <xs:enumeration value="Windows" />
+      <xs:enumeration value="Forms" />
+      <xs:enumeration value="Claims" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CredentialType" nillable="true" type="tns:CredentialType" />
+  <xs:complexType name="ActivityHours">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ActivityHour" nillable="true" type="tns:ActivityHour" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ActivityHours" nillable="true" type="tns:ActivityHours" />
+  <xs:complexType name="ActivityHour">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ActivityHourID" type="xs:int" />
+      <xs:element minOccurs="0" name="ActivityID" type="xs:int" />
+      <xs:element minOccurs="0" name="ActivityName" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Hours" nillable="true" type="q1:ArrayOfKeyValueOfstringboolean" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ActivityHour" nillable="true" type="tns:ActivityHour" />
+  <xs:complexType name="ActivitiesToProcess">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ActivityToProcess" nillable="true" type="tns:ActivityToProcess" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ActivitiesToProcess" nillable="true" type="tns:ActivitiesToProcess" />
+  <xs:complexType name="ActivityToProcess">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ActivityDefinition">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ActivityComplete" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ActivityError" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ActivityFinish" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="ActivityLock" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ActivityStart" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="ActivityToProcessID" type="xs:long" />
+          <xs:element minOccurs="0" name="BatchName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CachePath" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FailCount" type="xs:int" />
+          <xs:element minOccurs="0" name="LastFailTime" nillable="true" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ActivityToProcess" nillable="true" type="tns:ActivityToProcess" />
+  <xs:complexType name="QueueCollection">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TRQueue" nillable="true" type="tns:TRQueue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="QueueCollection" nillable="true" type="tns:QueueCollection" />
+  <xs:complexType name="CompletedBatch">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BatchName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CachePath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MachineName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CompletedBatch" nillable="true" type="tns:CompletedBatch" />
+  <xs:complexType name="CompletedBatches">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CompletedBatch" nillable="true" type="tns:CompletedBatch" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CompletedBatches" nillable="true" type="tns:CompletedBatches" />
+  <xs:complexType name="BatchState">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ActivityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReleaseState" type="tns:BatchReleaseState" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BatchState" nillable="true" type="tns:BatchState" />
+  <xs:simpleType name="BatchReleaseState">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NotFound" />
+      <xs:enumeration value="Received" />
+      <xs:enumeration value="InProcess" />
+      <xs:enumeration value="Error" />
+      <xs:enumeration value="Released" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="BatchReleaseState" nillable="true" type="tns:BatchReleaseState" />
+  <xs:complexType name="ArrayOfActivityToProcess">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ActivityToProcess" nillable="true" type="tns:ActivityToProcess" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfActivityToProcess" nillable="true" type="tns:ArrayOfActivityToProcess" />
+  <xs:complexType name="ArrayOfActivitiesToProcess">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ActivitiesToProcess" nillable="true" type="tns:ActivitiesToProcess" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfActivitiesToProcess" nillable="true" type="tns:ArrayOfActivitiesToProcess" />
+  <xs:complexType name="RepositorySchemaDefinitions">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RepositorySchemaDefinition" nillable="true" type="tns:RepositorySchemaDefinition" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RepositorySchemaDefinitions" nillable="true" type="tns:RepositorySchemaDefinitions" />
+  <xs:complexType name="RepositorySchemaDefinition">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="adfsUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="domain" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="isOffice365" type="xs:boolean" />
+      <xs:element minOccurs="0" name="lastUpdated" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="repositoryID" type="xs:int" />
+      <xs:element minOccurs="0" name="serverName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="siteType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="siteUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="type" type="tns:CredentialType" />
+      <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RepositorySchemaDefinition" nillable="true" type="tns:RepositorySchemaDefinition" />
+  <xs:complexType name="RepositoryDefinitions">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RepositoryDefinition" nillable="true" type="tns:RepositoryDefinition" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RepositoryDefinitions" nillable="true" type="tns:RepositoryDefinitions" />
+  <xs:complexType name="ProcessDefinitions">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ProcessDefinition" nillable="true" type="tns:ProcessDefinition" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProcessDefinitions" nillable="true" type="tns:ProcessDefinitions" />
+  <xs:complexType name="ArrayOfProcessNameMapping">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ProcessNameMapping" nillable="true" type="tns:ProcessNameMapping" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProcessNameMapping" nillable="true" type="tns:ArrayOfProcessNameMapping" />
+  <xs:complexType name="ProcessNameMapping">
+    <xs:sequence>
+      <xs:element name="_x003C_ActivityCount_x003E_k__BackingField" type="xs:int" />
+      <xs:element name="_x003C_DocumentClass_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_ProcessName_x003E_k__BackingField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProcessNameMapping" nillable="true" type="tns:ProcessNameMapping" />
+</xs:schema>

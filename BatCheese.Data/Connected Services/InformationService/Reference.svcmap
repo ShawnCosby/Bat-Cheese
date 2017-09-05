@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d5f7a2fc-c7ee-4c98-b2b9-c3650a0a2d41" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://scdev2:8010/InformationService" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="InformationService.wsdl" MetadataType="Wsdl" ID="a355714c-ad33-4541-91f8-d1e9f191e2d0" SourceId="1" SourceUrl="http://scdev2:8010/InformationService" />
+    <MetadataFile FileName="InformationService.xsd" MetadataType="Schema" ID="1d253a9a-de6b-48da-99d3-9c03b4e9dcd4" SourceId="1" SourceUrl="http://scdev2:8010/InformationService?xsd=xsd3" />
+    <MetadataFile FileName="InformationService1.xsd" MetadataType="Schema" ID="48187dfb-d016-45b6-b156-608154072ae7" SourceId="1" SourceUrl="http://scdev2:8010/InformationService?xsd=xsd2" />
+    <MetadataFile FileName="InformationService2.xsd" MetadataType="Schema" ID="1a2a0c01-2c1a-433d-a5b9-61ac4edadbb9" SourceId="1" SourceUrl="http://scdev2:8010/InformationService?xsd=xsd1" />
+    <MetadataFile FileName="InformationService3.xsd" MetadataType="Schema" ID="d66a3446-d435-4a3d-b2ac-e3a370f0e779" SourceId="1" SourceUrl="http://scdev2:8010/InformationService?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

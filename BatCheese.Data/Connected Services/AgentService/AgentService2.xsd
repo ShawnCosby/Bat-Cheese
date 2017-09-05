@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://scdev2:8010/AgentService?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://scdev2:8010/AgentService?xsd=xsd1" namespace="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" />
+  <xs:element name="ServiceShouldRun">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="servicename" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="machinename" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServiceShouldRunResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ServiceShouldRunResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetIsRunning">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="servicename" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="machinename" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="status" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetIsRunningResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetServicesStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="machinename" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetServicesStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetServicesStatusResult" nillable="true" type="q1:ArrayOfKeyValueOfstringboolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetService">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="servicename" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="machinename" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="status" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetServiceResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetServiceByID">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="serviceid" type="xs:int" />
+        <xs:element minOccurs="0" name="status" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetServiceByIDResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetServices">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetServicesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="GetServicesResult" nillable="true" type="q2:Services" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLocServices">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="culture" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLocServicesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="GetLocServicesResult" nillable="true" type="q3:Services" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActivities">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActivitiesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="GetActivitiesResult" nillable="true" type="q4:ActivityRegisters" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLocActivities">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="culture" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLocActivitiesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="GetLocActivitiesResult" nillable="true" type="q5:ActivityRegisters" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetActivity">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="activityid" type="xs:int" />
+        <xs:element minOccurs="0" name="status" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetActivityResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBatchesInProcess">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBatchesInProcessResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="GetBatchesInProcessResult" nillable="true" type="q6:ActivitiesToProcess" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetErrorBatches">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetErrorBatchesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="GetErrorBatchesResult" nillable="true" type="q7:ActivitiesToProcess" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTotalBatches">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTotalBatchesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetTotalBatchesResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ResubmitBatch">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="activitytoprocessid" type="xs:long" />
+        <xs:element minOccurs="0" name="activitynumber" type="xs:int" />
+        <xs:element minOccurs="0" name="activityname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="batchname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cachepath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ResubmitBatchResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteBatch">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="batchname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cachepath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteBatchResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActivityHours">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActivityHoursResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="GetActivityHoursResult" nillable="true" type="q8:ActivityHours" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveActivityHour">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="hour" nillable="true" type="q9:ActivityHour" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveActivityHourResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveService">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="servicename" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="machinename" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveServiceResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServiceEntryExists">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="servicename" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="machinename" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ServiceEntryExistsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ServiceEntryExistsResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertService">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="servicename" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="machinename" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertServiceResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsDbAvailable">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsDbAvailableResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IsDbAvailableResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

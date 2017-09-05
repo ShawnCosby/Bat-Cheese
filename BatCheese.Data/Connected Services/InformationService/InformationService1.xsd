@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://scdev2:8010/InformationService?xsd=xsd1" namespace="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" />
+  <xs:import schemaLocation="http://scdev2:8010/InformationService?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="GetAuditLogs">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="pageindex" type="xs:int" />
+        <xs:element minOccurs="0" name="pagesize" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAuditLogsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="GetAuditLogsResult" nillable="true" type="q1:ALogs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAuditLogsNonPaged">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAuditLogsNonPagedResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="GetAuditLogsNonPagedResult" nillable="true" type="q2:AuditLogs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAuditLogsFiltered">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="filter" nillable="true" type="q3:ArrayOfKeyValueOfstringstring" />
+        <xs:element minOccurs="0" name="isAnd" type="xs:boolean" />
+        <xs:element minOccurs="0" name="pageindex" type="xs:int" />
+        <xs:element minOccurs="0" name="pagesize" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAuditLogsFilteredResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="GetAuditLogsFilteredResult" nillable="true" type="q4:ALogs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAuditLogsFilteredNonPaged">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="filter" nillable="true" type="q5:ArrayOfKeyValueOfstringstring" />
+        <xs:element minOccurs="0" name="isAnd" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAuditLogsFilteredNonPagedResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="GetAuditLogsFilteredNonPagedResult" nillable="true" type="q6:AuditLogs" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteAuditLogs">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteAuditLogsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteAuditLogsResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MoveAuditLogs">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="newDatabase" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="newTable" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="WriteAuditLog">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="log" nillable="true" type="q7:AuditLog" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

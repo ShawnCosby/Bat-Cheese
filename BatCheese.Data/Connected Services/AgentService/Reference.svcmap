@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="16ab9368-edcb-47a7-b8a0-a37f7e061890" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://scdev2:8010/AgentService" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="AgentService.xsd" MetadataType="Schema" ID="ef96d250-2a5d-439c-a5a1-347a480464d4" SourceId="1" SourceUrl="http://scdev2:8010/AgentService?xsd=xsd2" />
+    <MetadataFile FileName="AgentService1.xsd" MetadataType="Schema" ID="a7584378-7406-4ad5-bf6e-f9d7dde208bb" SourceId="1" SourceUrl="http://scdev2:8010/AgentService?xsd=xsd0" />
+    <MetadataFile FileName="AgentService2.xsd" MetadataType="Schema" ID="8f94d262-979e-473b-adaf-85e851404977" SourceId="1" SourceUrl="http://scdev2:8010/AgentService?xsd=xsd3" />
+    <MetadataFile FileName="AgentService.wsdl" MetadataType="Wsdl" ID="938bdd22-1bef-46f7-8eb9-d26ed88017c7" SourceId="1" SourceUrl="http://scdev2:8010/AgentService" />
+    <MetadataFile FileName="AgentService3.xsd" MetadataType="Schema" ID="0aff6d88-e3f9-40d1-8428-28006d5e877b" SourceId="1" SourceUrl="http://scdev2:8010/AgentService?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

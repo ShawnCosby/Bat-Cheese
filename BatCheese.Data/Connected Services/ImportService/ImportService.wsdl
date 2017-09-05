@@ -1,0 +1,1683 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ImportService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="HttpBind_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SymmetricBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:ProtectionToken>
+              <wsp:Policy>
+                <sp:SecureConversationToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+                  <wsp:Policy>
+                    <sp:RequireDerivedKeys />
+                    <sp:BootstrapPolicy>
+                      <wsp:Policy>
+                        <sp:SignedParts>
+                          <sp:Body />
+                          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+                          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+                          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+                          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+                          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+                          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+                          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+                        </sp:SignedParts>
+                        <sp:EncryptedParts>
+                          <sp:Body />
+                        </sp:EncryptedParts>
+                        <sp:SymmetricBinding>
+                          <wsp:Policy>
+                            <sp:ProtectionToken>
+                              <wsp:Policy>
+                                <sp:SpnegoContextToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+                                  <wsp:Policy>
+                                    <sp:RequireDerivedKeys />
+                                  </wsp:Policy>
+                                </sp:SpnegoContextToken>
+                              </wsp:Policy>
+                            </sp:ProtectionToken>
+                            <sp:AlgorithmSuite>
+                              <wsp:Policy>
+                                <sp:Basic256 />
+                              </wsp:Policy>
+                            </sp:AlgorithmSuite>
+                            <sp:Layout>
+                              <wsp:Policy>
+                                <sp:Strict />
+                              </wsp:Policy>
+                            </sp:Layout>
+                            <sp:IncludeTimestamp />
+                            <sp:EncryptSignature />
+                            <sp:OnlySignEntireHeadersAndBody />
+                          </wsp:Policy>
+                        </sp:SymmetricBinding>
+                        <sp:Wss11>
+                          <wsp:Policy />
+                        </sp:Wss11>
+                        <sp:Trust10>
+                          <wsp:Policy>
+                            <sp:MustSupportIssuedTokens />
+                            <sp:RequireClientEntropy />
+                            <sp:RequireServerEntropy />
+                          </wsp:Policy>
+                        </sp:Trust10>
+                      </wsp:Policy>
+                    </sp:BootstrapPolicy>
+                  </wsp:Policy>
+                </sp:SecureConversationToken>
+              </wsp:Policy>
+            </sp:ProtectionToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+            <sp:IncludeTimestamp />
+            <sp:EncryptSignature />
+            <sp:OnlySignEntireHeadersAndBody />
+          </wsp:Policy>
+        </sp:SymmetricBinding>
+        <sp:Wss11 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy />
+        </sp:Wss11>
+        <sp:Trust10 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:MustSupportIssuedTokens />
+            <sp:RequireClientEntropy />
+            <sp:RequireServerEntropy />
+          </wsp:Policy>
+        </sp:Trust10>
+        <wsam:Addressing>
+          <wsp:Policy>
+            <wsam:AnonymousResponses />
+          </wsp:Policy>
+        </wsam:Addressing>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_UpdateBatchImport_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_UpdateBatchImport_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_GetAllBatchImports_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_GetAllBatchImports_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_GetBatchImports_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_GetBatchImports_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_GetBatchImport_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_GetBatchImport_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_SetBatchImportMachineActive_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_SetBatchImportMachineActive_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_SetBatchImportLastRun_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_SetBatchImportLastRun_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_GetBatchImportUpdateDate_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_GetBatchImportUpdateDate_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_DeleteBatchImport_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_DeleteBatchImport_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_SetBatchImportIsRunNow_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_SetBatchImportIsRunNow_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_GetBatchImportIsRunNow_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_GetBatchImportIsRunNow_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_SetBatchImportError_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_SetBatchImportError_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_GetBatchImportError_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_GetBatchImportError_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_GetImportHours_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_GetImportHours_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_SaveImportHour_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_SaveImportHour_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_GetBranches_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_GetBranches_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_SaveBranchConfig_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_SaveBranchConfig_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_UpdateBranchHealthStatus_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_UpdateBranchHealthStatus_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_AddBranch_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_AddBranch_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_RemoveBranch_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_RemoveBranch_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="PipeBind_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsam:Addressing>
+          <wsp:Policy>
+            <wsam:AnonymousResponses />
+          </wsp:Policy>
+        </wsam:Addressing>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="TcpBind_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsam:Addressing>
+          <wsp:Policy>
+            <wsam:AnonymousResponses />
+          </wsp:Policy>
+        </wsam:Addressing>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://scdev2:8010/ImportService?xsd=xsd3" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://scdev2:8010/ImportService?xsd=xsd0" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://scdev2:8010/ImportService?xsd=xsd1" namespace="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" />
+      <xsd:import schemaLocation="http://scdev2:8010/ImportService?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IImportService_UpdateBatchImport_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBatchImport" />
+  </wsdl:message>
+  <wsdl:message name="IImportService_UpdateBatchImport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBatchImportResponse" />
+  </wsdl:message>
+  <wsdl:message name="IImportService_GetAllBatchImports_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllBatchImports" />
+  </wsdl:message>
+  <wsdl:message name="IImportService_GetAllBatchImports_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllBatchImportsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IImportService_GetBatchImports_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBatchImports" />
+  </wsdl:message>
+  <wsdl:message name="IImportService_GetBatchImports_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBatchImportsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IImportService_GetBatchImport_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBatchImport" />
+  </wsdl:message>
+  <wsdl:message name="IImportService_GetBatchImport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBatchImportResponse" />
+  </wsdl:message>
+  <wsdl:message name="IImportService_SetBatchImportMachineActive_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetBatchImportMachineActive" />
+  </wsdl:message>
+  <wsdl:message name="IImportService_SetBatchImportMachineActive_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetBatchImportMachineActiveResponse" />
+  </wsdl:message>
+  <wsdl:message name="IImportService_SetBatchImportLastRun_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetBatchImportLastRun" />
+  </wsdl:message>
+  <wsdl:message name="IImportService_SetBatchImportLastRun_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetBatchImportLastRunResponse" />
+  </wsdl:message>
+  <wsdl:message name="IImportService_GetBatchImportUpdateDate_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBatchImportUpdateDate" />
+  </wsdl:message>
+  <wsdl:message name="IImportService_GetBatchImportUpdateDate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBatchImportUpdateDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IImportService_DeleteBatchImport_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteBatchImport" />
+  </wsdl:message>
+  <wsdl:message name="IImportService_DeleteBatchImport_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteBatchImportResponse" />
+  </wsdl:message>
+  <wsdl:message name="IImportService_SetBatchImportIsRunNow_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetBatchImportIsRunNow" />
+  </wsdl:message>
+  <wsdl:message name="IImportService_SetBatchImportIsRunNow_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetBatchImportIsRunNowResponse" />
+  </wsdl:message>
+  <wsdl:message name="IImportService_GetBatchImportIsRunNow_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBatchImportIsRunNow" />
+  </wsdl:message>
+  <wsdl:message name="IImportService_GetBatchImportIsRunNow_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBatchImportIsRunNowResponse" />
+  </wsdl:message>
+  <wsdl:message name="IImportService_SetBatchImportError_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetBatchImportError" />
+  </wsdl:message>
+  <wsdl:message name="IImportService_SetBatchImportError_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetBatchImportErrorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IImportService_GetBatchImportError_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBatchImportError" />
+  </wsdl:message>
+  <wsdl:message name="IImportService_GetBatchImportError_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBatchImportErrorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IImportService_GetImportHours_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetImportHours" />
+  </wsdl:message>
+  <wsdl:message name="IImportService_GetImportHours_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetImportHoursResponse" />
+  </wsdl:message>
+  <wsdl:message name="IImportService_SaveImportHour_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveImportHour" />
+  </wsdl:message>
+  <wsdl:message name="IImportService_SaveImportHour_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveImportHourResponse" />
+  </wsdl:message>
+  <wsdl:message name="IImportService_GetBranches_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBranches" />
+  </wsdl:message>
+  <wsdl:message name="IImportService_GetBranches_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBranchesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IImportService_SaveBranchConfig_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveBranchConfig" />
+  </wsdl:message>
+  <wsdl:message name="IImportService_SaveBranchConfig_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveBranchConfigResponse" />
+  </wsdl:message>
+  <wsdl:message name="IImportService_UpdateBranchHealthStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBranchHealthStatus" />
+  </wsdl:message>
+  <wsdl:message name="IImportService_UpdateBranchHealthStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBranchHealthStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IImportService_AddBranch_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddBranch" />
+  </wsdl:message>
+  <wsdl:message name="IImportService_AddBranch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddBranchResponse" />
+  </wsdl:message>
+  <wsdl:message name="IImportService_RemoveBranch_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveBranch" />
+  </wsdl:message>
+  <wsdl:message name="IImportService_RemoveBranch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveBranchResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IImportService">
+    <wsdl:operation name="UpdateBatchImport">
+      <wsdl:input wsam:Action="http://tempuri.org/IImportService/UpdateBatchImport" message="tns:IImportService_UpdateBatchImport_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IImportService/UpdateBatchImportResponse" message="tns:IImportService_UpdateBatchImport_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllBatchImports">
+      <wsdl:input wsam:Action="http://tempuri.org/IImportService/GetAllBatchImports" message="tns:IImportService_GetAllBatchImports_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IImportService/GetAllBatchImportsResponse" message="tns:IImportService_GetAllBatchImports_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBatchImports">
+      <wsdl:input wsam:Action="http://tempuri.org/IImportService/GetBatchImports" message="tns:IImportService_GetBatchImports_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IImportService/GetBatchImportsResponse" message="tns:IImportService_GetBatchImports_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBatchImport">
+      <wsdl:input wsam:Action="http://tempuri.org/IImportService/GetBatchImport" message="tns:IImportService_GetBatchImport_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IImportService/GetBatchImportResponse" message="tns:IImportService_GetBatchImport_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetBatchImportMachineActive">
+      <wsdl:input wsam:Action="http://tempuri.org/IImportService/SetBatchImportMachineActive" message="tns:IImportService_SetBatchImportMachineActive_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IImportService/SetBatchImportMachineActiveResponse" message="tns:IImportService_SetBatchImportMachineActive_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetBatchImportLastRun">
+      <wsdl:input wsam:Action="http://tempuri.org/IImportService/SetBatchImportLastRun" message="tns:IImportService_SetBatchImportLastRun_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IImportService/SetBatchImportLastRunResponse" message="tns:IImportService_SetBatchImportLastRun_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBatchImportUpdateDate">
+      <wsdl:input wsam:Action="http://tempuri.org/IImportService/GetBatchImportUpdateDate" message="tns:IImportService_GetBatchImportUpdateDate_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IImportService/GetBatchImportUpdateDateResponse" message="tns:IImportService_GetBatchImportUpdateDate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBatchImport">
+      <wsdl:input wsam:Action="http://tempuri.org/IImportService/DeleteBatchImport" message="tns:IImportService_DeleteBatchImport_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IImportService/DeleteBatchImportResponse" message="tns:IImportService_DeleteBatchImport_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetBatchImportIsRunNow">
+      <wsdl:input wsam:Action="http://tempuri.org/IImportService/SetBatchImportIsRunNow" message="tns:IImportService_SetBatchImportIsRunNow_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IImportService/SetBatchImportIsRunNowResponse" message="tns:IImportService_SetBatchImportIsRunNow_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBatchImportIsRunNow">
+      <wsdl:input wsam:Action="http://tempuri.org/IImportService/GetBatchImportIsRunNow" message="tns:IImportService_GetBatchImportIsRunNow_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IImportService/GetBatchImportIsRunNowResponse" message="tns:IImportService_GetBatchImportIsRunNow_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetBatchImportError">
+      <wsdl:input wsam:Action="http://tempuri.org/IImportService/SetBatchImportError" message="tns:IImportService_SetBatchImportError_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IImportService/SetBatchImportErrorResponse" message="tns:IImportService_SetBatchImportError_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBatchImportError">
+      <wsdl:input wsam:Action="http://tempuri.org/IImportService/GetBatchImportError" message="tns:IImportService_GetBatchImportError_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IImportService/GetBatchImportErrorResponse" message="tns:IImportService_GetBatchImportError_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetImportHours">
+      <wsdl:input wsam:Action="http://tempuri.org/IImportService/GetImportHours" message="tns:IImportService_GetImportHours_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IImportService/GetImportHoursResponse" message="tns:IImportService_GetImportHours_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveImportHour">
+      <wsdl:input wsam:Action="http://tempuri.org/IImportService/SaveImportHour" message="tns:IImportService_SaveImportHour_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IImportService/SaveImportHourResponse" message="tns:IImportService_SaveImportHour_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBranches">
+      <wsdl:input wsam:Action="http://tempuri.org/IImportService/GetBranches" message="tns:IImportService_GetBranches_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IImportService/GetBranchesResponse" message="tns:IImportService_GetBranches_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveBranchConfig">
+      <wsdl:input wsam:Action="http://tempuri.org/IImportService/SaveBranchConfig" message="tns:IImportService_SaveBranchConfig_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IImportService/SaveBranchConfigResponse" message="tns:IImportService_SaveBranchConfig_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBranchHealthStatus">
+      <wsdl:input wsam:Action="http://tempuri.org/IImportService/UpdateBranchHealthStatus" message="tns:IImportService_UpdateBranchHealthStatus_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IImportService/UpdateBranchHealthStatusResponse" message="tns:IImportService_UpdateBranchHealthStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddBranch">
+      <wsdl:input wsam:Action="http://tempuri.org/IImportService/AddBranch" message="tns:IImportService_AddBranch_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IImportService/AddBranchResponse" message="tns:IImportService_AddBranch_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveBranch">
+      <wsdl:input wsam:Action="http://tempuri.org/IImportService/RemoveBranch" message="tns:IImportService_RemoveBranch_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IImportService/RemoveBranchResponse" message="tns:IImportService_RemoveBranch_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="HttpBind" type="tns:IImportService">
+    <wsp:PolicyReference URI="#HttpBind_policy" />
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UpdateBatchImport">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/UpdateBatchImport" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#HttpBind_UpdateBatchImport_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#HttpBind_UpdateBatchImport_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllBatchImports">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/GetAllBatchImports" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#HttpBind_GetAllBatchImports_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#HttpBind_GetAllBatchImports_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBatchImports">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/GetBatchImports" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#HttpBind_GetBatchImports_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#HttpBind_GetBatchImports_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBatchImport">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/GetBatchImport" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#HttpBind_GetBatchImport_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#HttpBind_GetBatchImport_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetBatchImportMachineActive">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/SetBatchImportMachineActive" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#HttpBind_SetBatchImportMachineActive_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#HttpBind_SetBatchImportMachineActive_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetBatchImportLastRun">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/SetBatchImportLastRun" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#HttpBind_SetBatchImportLastRun_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#HttpBind_SetBatchImportLastRun_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBatchImportUpdateDate">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/GetBatchImportUpdateDate" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#HttpBind_GetBatchImportUpdateDate_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#HttpBind_GetBatchImportUpdateDate_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBatchImport">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/DeleteBatchImport" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#HttpBind_DeleteBatchImport_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#HttpBind_DeleteBatchImport_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetBatchImportIsRunNow">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/SetBatchImportIsRunNow" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#HttpBind_SetBatchImportIsRunNow_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#HttpBind_SetBatchImportIsRunNow_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBatchImportIsRunNow">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/GetBatchImportIsRunNow" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#HttpBind_GetBatchImportIsRunNow_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#HttpBind_GetBatchImportIsRunNow_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetBatchImportError">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/SetBatchImportError" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#HttpBind_SetBatchImportError_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#HttpBind_SetBatchImportError_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBatchImportError">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/GetBatchImportError" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#HttpBind_GetBatchImportError_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#HttpBind_GetBatchImportError_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetImportHours">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/GetImportHours" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#HttpBind_GetImportHours_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#HttpBind_GetImportHours_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveImportHour">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/SaveImportHour" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#HttpBind_SaveImportHour_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#HttpBind_SaveImportHour_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBranches">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/GetBranches" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#HttpBind_GetBranches_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#HttpBind_GetBranches_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveBranchConfig">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/SaveBranchConfig" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#HttpBind_SaveBranchConfig_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#HttpBind_SaveBranchConfig_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBranchHealthStatus">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/UpdateBranchHealthStatus" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#HttpBind_UpdateBranchHealthStatus_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#HttpBind_UpdateBranchHealthStatus_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddBranch">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/AddBranch" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#HttpBind_AddBranch_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#HttpBind_AddBranch_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveBranch">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/RemoveBranch" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#HttpBind_RemoveBranch_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#HttpBind_RemoveBranch_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PipeBind" type="tns:IImportService">
+    <wsp:PolicyReference URI="#PipeBind_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/named-pipe" />
+    <wsdl:operation name="UpdateBatchImport">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/UpdateBatchImport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllBatchImports">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/GetAllBatchImports" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBatchImports">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/GetBatchImports" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBatchImport">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/GetBatchImport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetBatchImportMachineActive">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/SetBatchImportMachineActive" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetBatchImportLastRun">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/SetBatchImportLastRun" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBatchImportUpdateDate">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/GetBatchImportUpdateDate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBatchImport">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/DeleteBatchImport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetBatchImportIsRunNow">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/SetBatchImportIsRunNow" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBatchImportIsRunNow">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/GetBatchImportIsRunNow" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetBatchImportError">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/SetBatchImportError" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBatchImportError">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/GetBatchImportError" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetImportHours">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/GetImportHours" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveImportHour">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/SaveImportHour" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBranches">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/GetBranches" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveBranchConfig">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/SaveBranchConfig" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBranchHealthStatus">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/UpdateBranchHealthStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddBranch">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/AddBranch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveBranch">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/RemoveBranch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TcpBind" type="tns:IImportService">
+    <wsp:PolicyReference URI="#TcpBind_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="UpdateBatchImport">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/UpdateBatchImport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllBatchImports">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/GetAllBatchImports" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBatchImports">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/GetBatchImports" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBatchImport">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/GetBatchImport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetBatchImportMachineActive">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/SetBatchImportMachineActive" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetBatchImportLastRun">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/SetBatchImportLastRun" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBatchImportUpdateDate">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/GetBatchImportUpdateDate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBatchImport">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/DeleteBatchImport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetBatchImportIsRunNow">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/SetBatchImportIsRunNow" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBatchImportIsRunNow">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/GetBatchImportIsRunNow" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetBatchImportError">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/SetBatchImportError" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBatchImportError">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/GetBatchImportError" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetImportHours">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/GetImportHours" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveImportHour">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/SaveImportHour" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBranches">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/GetBranches" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveBranchConfig">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/SaveBranchConfig" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBranchHealthStatus">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/UpdateBranchHealthStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddBranch">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/AddBranch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveBranch">
+      <soap12:operation soapAction="http://tempuri.org/IImportService/RemoveBranch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ImportService">
+    <wsdl:port name="HttpBind" binding="tns:HttpBind">
+      <soap12:address location="http://scdev2:8050/ImportService" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>http://scdev2:8050/ImportService</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Spn>host/scdev2.RecordLion.com</Spn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="PipeBind" binding="tns:PipeBind">
+      <soap12:address location="net.pipe://scdev2/ImportService" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.pipe://scdev2/ImportService</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Spn>host/scdev2.RecordLion.com</Spn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="TcpBind" binding="tns:TcpBind">
+      <soap12:address location="net.tcp://scdev2/ImportService" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://scdev2/ImportService</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Spn>host/scdev2.RecordLion.com</Spn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

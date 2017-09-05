@@ -1,0 +1,913 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CommunicationCachingService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="HttpBind_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SymmetricBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:ProtectionToken>
+              <wsp:Policy>
+                <sp:SecureConversationToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+                  <wsp:Policy>
+                    <sp:RequireDerivedKeys />
+                    <sp:BootstrapPolicy>
+                      <wsp:Policy>
+                        <sp:SignedParts>
+                          <sp:Body />
+                          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+                          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+                          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+                          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+                          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+                          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+                          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+                        </sp:SignedParts>
+                        <sp:EncryptedParts>
+                          <sp:Body />
+                        </sp:EncryptedParts>
+                        <sp:SymmetricBinding>
+                          <wsp:Policy>
+                            <sp:ProtectionToken>
+                              <wsp:Policy>
+                                <sp:SpnegoContextToken sp:IncludeToken="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy/IncludeToken/AlwaysToRecipient">
+                                  <wsp:Policy>
+                                    <sp:RequireDerivedKeys />
+                                  </wsp:Policy>
+                                </sp:SpnegoContextToken>
+                              </wsp:Policy>
+                            </sp:ProtectionToken>
+                            <sp:AlgorithmSuite>
+                              <wsp:Policy>
+                                <sp:Basic256 />
+                              </wsp:Policy>
+                            </sp:AlgorithmSuite>
+                            <sp:Layout>
+                              <wsp:Policy>
+                                <sp:Strict />
+                              </wsp:Policy>
+                            </sp:Layout>
+                            <sp:IncludeTimestamp />
+                            <sp:EncryptSignature />
+                            <sp:OnlySignEntireHeadersAndBody />
+                          </wsp:Policy>
+                        </sp:SymmetricBinding>
+                        <sp:Wss11>
+                          <wsp:Policy />
+                        </sp:Wss11>
+                        <sp:Trust10>
+                          <wsp:Policy>
+                            <sp:MustSupportIssuedTokens />
+                            <sp:RequireClientEntropy />
+                            <sp:RequireServerEntropy />
+                          </wsp:Policy>
+                        </sp:Trust10>
+                      </wsp:Policy>
+                    </sp:BootstrapPolicy>
+                  </wsp:Policy>
+                </sp:SecureConversationToken>
+              </wsp:Policy>
+            </sp:ProtectionToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+            <sp:IncludeTimestamp />
+            <sp:EncryptSignature />
+            <sp:OnlySignEntireHeadersAndBody />
+          </wsp:Policy>
+        </sp:SymmetricBinding>
+        <sp:Wss11 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy />
+        </sp:Wss11>
+        <sp:Trust10 xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:MustSupportIssuedTokens />
+            <sp:RequireClientEntropy />
+            <sp:RequireServerEntropy />
+          </wsp:Policy>
+        </sp:Trust10>
+        <wsam:Addressing>
+          <wsp:Policy>
+            <wsam:AnonymousResponses />
+          </wsp:Policy>
+        </wsam:Addressing>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_GetSchemaDefinition_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_GetSchemaDefinition_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_GetSchemaDefinitionByUrl_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_GetSchemaDefinitionByUrl_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_AddRepositoryDefinition_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_AddRepositoryDefinition_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_EditRepositoryDefinition_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_EditRepositoryDefinition_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_UpdateRepositorySchema_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_UpdateRepositorySchema_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_SaveSchemaDefinition_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_SaveSchemaDefinition_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_DeleteSchemaInfo_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_DeleteSchemaInfo_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_ClearAllSchemaDefinitions_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_ClearAllSchemaDefinitions_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_DeleteSchemaInfoByUrl_Input_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="HttpBind_DeleteSchemaInfoByUrl_output_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+          <sp:Header Name="To" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="From" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="FaultTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="ReplyTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="MessageID" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="RelatesTo" Namespace="http://www.w3.org/2005/08/addressing" />
+          <sp:Header Name="Action" Namespace="http://www.w3.org/2005/08/addressing" />
+        </sp:SignedParts>
+        <sp:EncryptedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <sp:Body />
+        </sp:EncryptedParts>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="PipeBind_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsam:Addressing>
+          <wsp:Policy>
+            <wsam:AnonymousResponses />
+          </wsp:Policy>
+        </wsam:Addressing>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="TcpBind_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsam:Addressing>
+          <wsp:Policy>
+            <wsam:AnonymousResponses />
+          </wsp:Policy>
+        </wsam:Addressing>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://scdev2:8010/CommunicationCachingService?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://scdev2:8010/CommunicationCachingService?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://scdev2:8010/CommunicationCachingService?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/KnowledgeLake.Index.Client" />
+      <xsd:import schemaLocation="http://scdev2:8010/CommunicationCachingService?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ICommunicationCachingService_GetSchemaDefinition_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSchemaDefinition" />
+  </wsdl:message>
+  <wsdl:message name="ICommunicationCachingService_GetSchemaDefinition_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSchemaDefinitionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICommunicationCachingService_GetSchemaDefinitionByUrl_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSchemaDefinitionByUrl" />
+  </wsdl:message>
+  <wsdl:message name="ICommunicationCachingService_GetSchemaDefinitionByUrl_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSchemaDefinitionByUrlResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICommunicationCachingService_AddRepositoryDefinition_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddRepositoryDefinition" />
+  </wsdl:message>
+  <wsdl:message name="ICommunicationCachingService_AddRepositoryDefinition_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddRepositoryDefinitionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICommunicationCachingService_EditRepositoryDefinition_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditRepositoryDefinition" />
+  </wsdl:message>
+  <wsdl:message name="ICommunicationCachingService_EditRepositoryDefinition_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditRepositoryDefinitionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICommunicationCachingService_UpdateRepositorySchema_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateRepositorySchema" />
+  </wsdl:message>
+  <wsdl:message name="ICommunicationCachingService_UpdateRepositorySchema_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateRepositorySchemaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICommunicationCachingService_SaveSchemaDefinition_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveSchemaDefinition" />
+  </wsdl:message>
+  <wsdl:message name="ICommunicationCachingService_SaveSchemaDefinition_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveSchemaDefinitionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICommunicationCachingService_DeleteSchemaInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSchemaInfo" />
+  </wsdl:message>
+  <wsdl:message name="ICommunicationCachingService_DeleteSchemaInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSchemaInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICommunicationCachingService_ClearAllSchemaDefinitions_InputMessage">
+    <wsdl:part name="parameters" element="tns:ClearAllSchemaDefinitions" />
+  </wsdl:message>
+  <wsdl:message name="ICommunicationCachingService_ClearAllSchemaDefinitions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ClearAllSchemaDefinitionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICommunicationCachingService_DeleteSchemaInfoByUrl_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSchemaInfoByUrl" />
+  </wsdl:message>
+  <wsdl:message name="ICommunicationCachingService_DeleteSchemaInfoByUrl_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSchemaInfoByUrlResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ICommunicationCachingService">
+    <wsdl:operation name="GetSchemaDefinition">
+      <wsdl:input wsam:Action="http://tempuri.org/ICommunicationCachingService/GetSchemaDefinition" message="tns:ICommunicationCachingService_GetSchemaDefinition_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/ICommunicationCachingService/GetSchemaDefinitionResponse" message="tns:ICommunicationCachingService_GetSchemaDefinition_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSchemaDefinitionByUrl">
+      <wsdl:input wsam:Action="http://tempuri.org/ICommunicationCachingService/GetSchemaDefinitionByUrl" message="tns:ICommunicationCachingService_GetSchemaDefinitionByUrl_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/ICommunicationCachingService/GetSchemaDefinitionByUrlResponse" message="tns:ICommunicationCachingService_GetSchemaDefinitionByUrl_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddRepositoryDefinition">
+      <wsdl:input wsam:Action="http://tempuri.org/ICommunicationCachingService/AddRepositoryDefinition" message="tns:ICommunicationCachingService_AddRepositoryDefinition_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/ICommunicationCachingService/AddRepositoryDefinitionResponse" message="tns:ICommunicationCachingService_AddRepositoryDefinition_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditRepositoryDefinition">
+      <wsdl:input wsam:Action="http://tempuri.org/ICommunicationCachingService/EditRepositoryDefinition" message="tns:ICommunicationCachingService_EditRepositoryDefinition_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/ICommunicationCachingService/EditRepositoryDefinitionResponse" message="tns:ICommunicationCachingService_EditRepositoryDefinition_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRepositorySchema">
+      <wsdl:input wsam:Action="http://tempuri.org/ICommunicationCachingService/UpdateRepositorySchema" message="tns:ICommunicationCachingService_UpdateRepositorySchema_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/ICommunicationCachingService/UpdateRepositorySchemaResponse" message="tns:ICommunicationCachingService_UpdateRepositorySchema_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveSchemaDefinition">
+      <wsdl:input wsam:Action="http://tempuri.org/ICommunicationCachingService/SaveSchemaDefinition" message="tns:ICommunicationCachingService_SaveSchemaDefinition_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/ICommunicationCachingService/SaveSchemaDefinitionResponse" message="tns:ICommunicationCachingService_SaveSchemaDefinition_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSchemaInfo">
+      <wsdl:input wsam:Action="http://tempuri.org/ICommunicationCachingService/DeleteSchemaInfo" message="tns:ICommunicationCachingService_DeleteSchemaInfo_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/ICommunicationCachingService/DeleteSchemaInfoResponse" message="tns:ICommunicationCachingService_DeleteSchemaInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ClearAllSchemaDefinitions">
+      <wsdl:input wsam:Action="http://tempuri.org/ICommunicationCachingService/ClearAllSchemaDefinitions" message="tns:ICommunicationCachingService_ClearAllSchemaDefinitions_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/ICommunicationCachingService/ClearAllSchemaDefinitionsResponse" message="tns:ICommunicationCachingService_ClearAllSchemaDefinitions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSchemaInfoByUrl">
+      <wsdl:input wsam:Action="http://tempuri.org/ICommunicationCachingService/DeleteSchemaInfoByUrl" message="tns:ICommunicationCachingService_DeleteSchemaInfoByUrl_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/ICommunicationCachingService/DeleteSchemaInfoByUrlResponse" message="tns:ICommunicationCachingService_DeleteSchemaInfoByUrl_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="HttpBind" type="tns:ICommunicationCachingService">
+    <wsp:PolicyReference URI="#HttpBind_policy" />
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetSchemaDefinition">
+      <soap12:operation soapAction="http://tempuri.org/ICommunicationCachingService/GetSchemaDefinition" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#HttpBind_GetSchemaDefinition_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#HttpBind_GetSchemaDefinition_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSchemaDefinitionByUrl">
+      <soap12:operation soapAction="http://tempuri.org/ICommunicationCachingService/GetSchemaDefinitionByUrl" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#HttpBind_GetSchemaDefinitionByUrl_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#HttpBind_GetSchemaDefinitionByUrl_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddRepositoryDefinition">
+      <soap12:operation soapAction="http://tempuri.org/ICommunicationCachingService/AddRepositoryDefinition" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#HttpBind_AddRepositoryDefinition_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#HttpBind_AddRepositoryDefinition_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditRepositoryDefinition">
+      <soap12:operation soapAction="http://tempuri.org/ICommunicationCachingService/EditRepositoryDefinition" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#HttpBind_EditRepositoryDefinition_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#HttpBind_EditRepositoryDefinition_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRepositorySchema">
+      <soap12:operation soapAction="http://tempuri.org/ICommunicationCachingService/UpdateRepositorySchema" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#HttpBind_UpdateRepositorySchema_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#HttpBind_UpdateRepositorySchema_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveSchemaDefinition">
+      <soap12:operation soapAction="http://tempuri.org/ICommunicationCachingService/SaveSchemaDefinition" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#HttpBind_SaveSchemaDefinition_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#HttpBind_SaveSchemaDefinition_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSchemaInfo">
+      <soap12:operation soapAction="http://tempuri.org/ICommunicationCachingService/DeleteSchemaInfo" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#HttpBind_DeleteSchemaInfo_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#HttpBind_DeleteSchemaInfo_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClearAllSchemaDefinitions">
+      <soap12:operation soapAction="http://tempuri.org/ICommunicationCachingService/ClearAllSchemaDefinitions" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#HttpBind_ClearAllSchemaDefinitions_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#HttpBind_ClearAllSchemaDefinitions_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSchemaInfoByUrl">
+      <soap12:operation soapAction="http://tempuri.org/ICommunicationCachingService/DeleteSchemaInfoByUrl" style="document" />
+      <wsdl:input>
+        <wsp:PolicyReference URI="#HttpBind_DeleteSchemaInfoByUrl_Input_policy" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <wsp:PolicyReference URI="#HttpBind_DeleteSchemaInfoByUrl_output_policy" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PipeBind" type="tns:ICommunicationCachingService">
+    <wsp:PolicyReference URI="#PipeBind_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/named-pipe" />
+    <wsdl:operation name="GetSchemaDefinition">
+      <soap12:operation soapAction="http://tempuri.org/ICommunicationCachingService/GetSchemaDefinition" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSchemaDefinitionByUrl">
+      <soap12:operation soapAction="http://tempuri.org/ICommunicationCachingService/GetSchemaDefinitionByUrl" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddRepositoryDefinition">
+      <soap12:operation soapAction="http://tempuri.org/ICommunicationCachingService/AddRepositoryDefinition" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditRepositoryDefinition">
+      <soap12:operation soapAction="http://tempuri.org/ICommunicationCachingService/EditRepositoryDefinition" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRepositorySchema">
+      <soap12:operation soapAction="http://tempuri.org/ICommunicationCachingService/UpdateRepositorySchema" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveSchemaDefinition">
+      <soap12:operation soapAction="http://tempuri.org/ICommunicationCachingService/SaveSchemaDefinition" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSchemaInfo">
+      <soap12:operation soapAction="http://tempuri.org/ICommunicationCachingService/DeleteSchemaInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClearAllSchemaDefinitions">
+      <soap12:operation soapAction="http://tempuri.org/ICommunicationCachingService/ClearAllSchemaDefinitions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSchemaInfoByUrl">
+      <soap12:operation soapAction="http://tempuri.org/ICommunicationCachingService/DeleteSchemaInfoByUrl" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TcpBind" type="tns:ICommunicationCachingService">
+    <wsp:PolicyReference URI="#TcpBind_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="GetSchemaDefinition">
+      <soap12:operation soapAction="http://tempuri.org/ICommunicationCachingService/GetSchemaDefinition" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSchemaDefinitionByUrl">
+      <soap12:operation soapAction="http://tempuri.org/ICommunicationCachingService/GetSchemaDefinitionByUrl" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddRepositoryDefinition">
+      <soap12:operation soapAction="http://tempuri.org/ICommunicationCachingService/AddRepositoryDefinition" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditRepositoryDefinition">
+      <soap12:operation soapAction="http://tempuri.org/ICommunicationCachingService/EditRepositoryDefinition" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRepositorySchema">
+      <soap12:operation soapAction="http://tempuri.org/ICommunicationCachingService/UpdateRepositorySchema" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveSchemaDefinition">
+      <soap12:operation soapAction="http://tempuri.org/ICommunicationCachingService/SaveSchemaDefinition" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSchemaInfo">
+      <soap12:operation soapAction="http://tempuri.org/ICommunicationCachingService/DeleteSchemaInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClearAllSchemaDefinitions">
+      <soap12:operation soapAction="http://tempuri.org/ICommunicationCachingService/ClearAllSchemaDefinitions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSchemaInfoByUrl">
+      <soap12:operation soapAction="http://tempuri.org/ICommunicationCachingService/DeleteSchemaInfoByUrl" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CommunicationCachingService">
+    <wsdl:port name="HttpBind" binding="tns:HttpBind">
+      <soap12:address location="http://scdev2:8050/CommunicationCachingService" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>http://scdev2:8050/CommunicationCachingService</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Spn>host/scdev2.RecordLion.com</Spn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="PipeBind" binding="tns:PipeBind">
+      <soap12:address location="net.pipe://scdev2/CommunicationCachingService" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.pipe://scdev2/CommunicationCachingService</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Spn>host/scdev2.RecordLion.com</Spn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="TcpBind" binding="tns:TcpBind">
+      <soap12:address location="net.tcp://scdev2/CommunicationCachingService" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://scdev2/CommunicationCachingService</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Spn>host/scdev2.RecordLion.com</Spn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

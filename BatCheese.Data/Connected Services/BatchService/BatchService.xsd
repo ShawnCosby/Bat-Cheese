@@ -1,0 +1,1152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://scdev2:8010/BatchService?xsd=xsd1" namespace="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" />
+  <xs:import schemaLocation="http://scdev2:8010/BatchService?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="AddQueue">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="batchname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cachepath" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="activity" type="xs:int" />
+        <xs:element minOccurs="0" name="error" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddQueueResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DynamicallyGenerateCachePath">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DynamicallyGenerateCachePathResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DynamicallyGenerateCachePathResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ResetLocks">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="machineName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ResetLocksResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckLock">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="batchName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cachePath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckLockResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CheckLockResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetQueueCollection">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetQueueCollectionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="GetQueueCollectionResult" nillable="true" type="q1:QueueCollection" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsProcessByDocument">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsProcessByDocumentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IsProcessByDocumentResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetConfigurationItem">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="itemKey" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetConfigurationItemResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetConfigurationItemResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetConfigurationItem">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="itemKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="itemValue" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetConfigurationItemResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertConfigurationItem">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="itemKey" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="itemValue" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertConfigurationItemResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBatchState">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="batchname" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBatchStateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="GetBatchStateResult" nillable="true" type="q2:BatchState" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertBatchLock">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="batchname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cachepath" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="machineName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertBatchLockResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertBatchLockByUserName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="batchname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cachepath" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="machineName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertBatchLockByUserNameResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryLockedBatchesByUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QueryLockedBatchesByUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="QueryLockedBatchesByUserResult" nillable="true" type="q3:LockedBatches" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteBatchLock">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="batchname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cachepath" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="machineName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteBatchLockResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteQueue">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="batchname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cachepath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteQueueResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteBatch">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="batchName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cachePath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteBatchResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateQueue">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="activitynumber" type="xs:int" />
+        <xs:element minOccurs="0" name="activityname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="batchname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cachepath" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="error" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateQueueResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateQueueCachePath">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="batchname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cachepath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateQueueCachePathResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertProcess">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="batchname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cachePath" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="processName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="finishedTime" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertProcessResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="InsertProcessResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertActivityToProcess">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="batchname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cachepath" nillable="true" type="xs:string" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="def" nillable="true" type="q4:ActivityDefinition" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertActivityToProcessResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="InsertActivityToProcessResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteActivitiesToProcess">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="batchname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cachepath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteActivitiesToProcessResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateActivityToProcess">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="library" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="batchname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cachepath" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="activitycomplete" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateActivityToProcessResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateActivitiesToProcessError">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="activitytoprocessid" type="xs:long" />
+        <xs:element minOccurs="0" name="error" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateActivitiesToProcessErrorResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateActivitiesToProcessErrorByBatch">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="batchName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="error" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateActivitiesToProcessErrorByBatchResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateBatchErrorStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="activitytoprocessid" type="xs:long" />
+        <xs:element minOccurs="0" name="error" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="batchName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cachePath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateBatchErrorStatusResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateActivitiesToProcessStart">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="activitytoprocessid" type="xs:long" />
+        <xs:element minOccurs="0" name="start" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="machineName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateActivitiesToProcessStartResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateActivitiesToProcessStartResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateLockedActivitiesToProcessMachineName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="activitytoprocessid" type="xs:long" />
+        <xs:element minOccurs="0" name="start" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="machineName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateLockedActivitiesToProcessMachineNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateLockedActivitiesToProcessMachineNameResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateLockedActivitiesToProcessMachineNameByBatch">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="activitytoprocessid" type="xs:long" />
+        <xs:element minOccurs="0" name="lockName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="batchName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cachePath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateLockedActivitiesToProcessMachineNameByBatchResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateLockedActivitiesToProcessMachineNameByBatchResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateActivitiesToProcessComplete">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="activitytoprocessid" type="xs:long" />
+        <xs:element minOccurs="0" name="finish" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateActivitiesToProcessCompleteResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateBatchCompleteStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="activitytoprocessid" type="xs:long" />
+        <xs:element minOccurs="0" name="duration" type="xs:long" />
+        <xs:element minOccurs="0" name="openDuration" type="xs:long" />
+        <xs:element minOccurs="0" name="batchName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cachePath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateBatchCompleteStatusResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ResetActivityToProcessLocks">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="machineName" nillable="true" type="xs:string" />
+        <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="activityClasses" nillable="true" type="q5:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ResetActivityToProcessLocksResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UnlockActivityToProcess">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="activitytoprocessid" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UnlockActivityToProcessResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UnlockActivityToProcessByBatch">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="activitytoprocessid" type="xs:long" />
+        <xs:element minOccurs="0" name="batchName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UnlockActivityToProcessByBatchResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UnlockActivityToProcessByBatchActivityNumber">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="activityToProcessActivityNumber" type="xs:long" />
+        <xs:element minOccurs="0" name="batchName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UnlockActivityToProcessByBatchActivityNumberResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllActivities">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllActivitiesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="GetAllActivitiesResult" nillable="true" type="q6:ActivitiesToProcess" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActivitiesToProcess">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActivitiesToProcessResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="GetActivitiesToProcessResult" nillable="true" type="q7:ActivitiesToProcess" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActivityToProcess">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="activityClasses" nillable="true" type="q8:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActivityToProcessResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="GetActivityToProcessResult" nillable="true" type="q9:ActivityToProcess" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActivityToProcessWithLock">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="activityClasses" nillable="true" type="q10:ArrayOfstring" />
+        <xs:element minOccurs="0" name="machineName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActivityToProcessWithLockResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="GetActivityToProcessWithLockResult" nillable="true" type="q11:ActivityToProcess" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMultipleActivityToProcessWithLock">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="activityClasses" nillable="true" type="q12:ArrayOfstring" />
+        <xs:element minOccurs="0" name="machineName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="rowsToLock" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMultipleActivityToProcessWithLockResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="GetMultipleActivityToProcessWithLockResult" nillable="true" type="q13:ArrayOfActivityToProcess" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMultipleActivityToProcessWithLockByBatch">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="serverType" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="machineName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="rowsToLock" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMultipleActivityToProcessWithLockByBatchResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="GetMultipleActivityToProcessWithLockByBatchResult" nillable="true" type="q14:ArrayOfActivitiesToProcess" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetManualActivitiesToProcess">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="cachepaths" nillable="true" type="q15:ArrayOfstring" />
+        <xs:element minOccurs="0" name="activityname" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetManualActivitiesToProcessResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="GetManualActivitiesToProcessResult" nillable="true" type="q16:ActivitiesToProcess" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetManualActivitiesByProcess">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="cachepaths" nillable="true" type="q17:ArrayOfstring" />
+        <xs:element minOccurs="0" name="activityname" nillable="true" type="xs:string" />
+        <xs:element xmlns:q18="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="processnames" nillable="true" type="q18:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetManualActivitiesByProcessResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="GetManualActivitiesByProcessResult" nillable="true" type="q19:ActivitiesToProcess" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetManualActivityInProcess">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="batchname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cachepath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetManualActivityInProcessResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="GetManualActivityInProcessResult" nillable="true" type="q20:ActivityToProcess" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActivitiesForBatch">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="batchName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cachePath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActivitiesForBatchResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="GetActivitiesForBatchResult" nillable="true" type="q21:ActivitiesToProcess" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCompletedBatches">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCompletedBatchesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="GetCompletedBatchesResult" nillable="true" type="q22:ActivitiesToProcess" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BatchExists">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="batchname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cachepath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BatchExistsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="BatchExistsResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BatchInManualActivity">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="batchname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cachepath" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="activityname" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BatchInManualActivityResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="BatchInManualActivityResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActivities">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActivitiesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="GetActivitiesResult" nillable="true" type="q23:ActivityRegisters" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLocActivities">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="culture" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLocActivitiesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="GetLocActivitiesResult" nillable="true" type="q24:ActivityRegisters" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRegisteredActivities">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="server" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="machine" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRegisteredActivitiesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="GetRegisteredActivitiesResult" nillable="true" type="q25:ActivityRegisters" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRegisteredActiveActivities">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="server" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="machine" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRegisteredActiveActivitiesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="GetRegisteredActiveActivitiesResult" nillable="true" type="q26:ActivityRegisters" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActivityHours">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="machine" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActivityHoursResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="GetActivityHoursResult" nillable="true" type="q27:ActivityHours" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRepositorySchemaDefinitions">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRepositorySchemaDefinitionsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="GetRepositorySchemaDefinitionsResult" nillable="true" type="q28:RepositorySchemaDefinitions" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckRepositoryDefinition">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="docClassURL" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckRepositoryDefinitionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CheckRepositoryDefinitionResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRepositoryDefinitions">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRepositoryDefinitionsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="GetRepositoryDefinitionsResult" nillable="true" type="q29:RepositoryDefinitions" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRepositoryDefinition">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="repositoryId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRepositoryDefinitionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="GetRepositoryDefinitionResult" nillable="true" type="q30:RepositoryDefinition" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRepositoryDefinitionByURL">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="siteURL" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRepositoryDefinitionByURLResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="GetRepositoryDefinitionByURLResult" nillable="true" type="q31:RepositoryDefinition" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveRepositoryDefinition">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="rd" nillable="true" type="q32:RepositoryDefinition" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveRepositoryDefinitionResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteRepositoryDefinition">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="repositoryId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteRepositoryDefinitionResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteRepositoryDefinitionByURL">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="siteURL" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteRepositoryDefinitionByURLResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteRepositoryDefinitionByURLResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProcessDefinitions">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProcessDefinitionsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="GetProcessDefinitionsResult" nillable="true" type="q33:ProcessDefinitions" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProcessDefinition">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="processName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProcessDefinitionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="GetProcessDefinitionResult" nillable="true" type="q34:ProcessDefinition" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDefaultActivityDefinitions">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDefaultActivityDefinitionsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="GetDefaultActivityDefinitionsResult" nillable="true" type="q35:ActivityDefinitions" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActivityDesigners">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActivityDesignersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="GetActivityDesignersResult" nillable="true" type="q36:ActivityDesigners" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLocActivityDesigners">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="culture" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLocActivityDesignersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="GetLocActivityDesignersResult" nillable="true" type="q37:ActivityDesigners" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveActivityDesigners">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="designers" nillable="true" type="q38:ActivityDesigners" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveActivityDesignersResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveActivity">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="activity" nillable="true" type="q39:ActivityRegister" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SaveActivityResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteActivityRegistration">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="activityId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteActivityRegistrationResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GenerateUniqueBatchName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="scannerID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GenerateUniqueBatchNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GenerateUniqueBatchNameResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsBatchLockedOrErrored">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="batchname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cachepath" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="activityToProcessId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsBatchLockedOrErroredResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IsBatchLockedOrErroredResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddClientCache">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cachePath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddClientCacheResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveClientCache">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="cachePath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveClientCacheResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClientCache">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetClientCacheResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q40="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetClientCacheResult" nillable="true" type="q40:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateBatchPaths">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="batchName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="newCachePath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateBatchPathsResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IncrementRetry">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="activityToProcessId" type="xs:long" />
+        <xs:element minOccurs="0" name="currentRetryCount" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IncrementRetryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IncrementRetryResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ClearRetries">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="activityToProcessId" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ClearRetriesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ClearRetriesResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SynchronizeBatchPriorityWithDatabase">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="batchname" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cachepath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SynchronizeBatchPriorityWithDatabaseResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateInProcessPriority">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="processName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="priority" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateInProcessPriorityResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateInProcessPriorityResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetProcessPriority">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="processName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="priority" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetProcessPriorityResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="SetProcessPriorityResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateBatchPriority">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="batchName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="priority" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateBatchPriorityResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateBatchPriorityResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateActivitiesToProcess">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="batchName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="cachePath" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="processName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="priorityOverride" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateActivitiesToProcessResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CreateActivitiesToProcessResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllProcessNameMappings">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllProcessNameMappingsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="GetAllProcessNameMappingsResult" nillable="true" type="q41:ArrayOfProcessNameMapping" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProcessNameMappings">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q42="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="documentClassNames" nillable="true" type="q42:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProcessNameMappingsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/KnowledgeLake.Capture.Server.Common" minOccurs="0" name="GetProcessNameMappingsResult" nillable="true" type="q43:ArrayOfProcessNameMapping" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
