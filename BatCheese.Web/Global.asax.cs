@@ -11,7 +11,7 @@ using Ninject;
 
 namespace BatCheese.Web
 {
-    public class MvcApplication :NinjectHttpApplication
+    public class MvcApplication : HttpApplication
     {
         protected void Application_Start()
         {

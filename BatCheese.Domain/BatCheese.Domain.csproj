@@ -42,6 +42,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,10 +52,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AgentService.cs" />
+    <Compile Include="Services\IAgentService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BatCheese.Data\BatCheese.Data.csproj">
+      <Project>{426BECBD-24EC-4654-A5F6-E5515608B770}</Project>
+      <Name>BatCheese.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BatCheese.Repository\BatCheese.Repository.csproj">
+      <Project>{6BE9E51F-04E7-48F8-AB92-59B750197DA2}</Project>
+      <Name>BatCheese.Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
