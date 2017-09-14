@@ -1,8 +1,6 @@
-﻿using Ninject.Modules;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using BatCheese.Domain.Services;
+using Ninject.Modules;
+using Ninject.Web.Common;
 
 namespace BatCheese.Web.IOC
 {
@@ -10,7 +8,7 @@ namespace BatCheese.Web.IOC
     {
         public override void Load()
         {
-            //this.Bind<
+            this.Bind<IAgentService>().To<AgentService>().InRequestScope();
         }
     }
 }

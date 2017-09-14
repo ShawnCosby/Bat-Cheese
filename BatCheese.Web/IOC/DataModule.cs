@@ -1,4 +1,5 @@
 ﻿using BatCheese.Data.AgentService;
+using Ninject.Extensions.Factory;
 using Ninject.Modules;
 using Ninject.Web.Common;
 using System;
@@ -13,14 +14,8 @@ namespace BatCheese.Web.IOC
     {
         public override void Load()
         {
-            this.Bind<ClientBase<IAgentService>>().ToMethod(context =>
-            {
-                var client = new AgentServiceClient();
-
-                
-
-                return client;
-            }).InRequestScope();
+            this.Bind<AgentServiceClient>().ToSelf().InRequestScope();
+            this.Bind<IAgentServiceClientFactory>().ToFactory().InRequestScope();
         }
     }
 }

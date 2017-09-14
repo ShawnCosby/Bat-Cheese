@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgentService\IAgentServiceClientFactory.cs" />
     <Compile Include="ConfigData.cs" />
     <Compile Include="Connected Services\AgentService\Reference.cs">
       <AutoGen>True</AutoGen>

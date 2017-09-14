@@ -8,5 +8,6 @@ namespace BatCheese.Domain.Services
 {
     public interface IAgentService
     {
+        Task GetErrorBatchesAsync();
     }
 }

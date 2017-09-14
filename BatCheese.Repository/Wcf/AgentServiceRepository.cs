@@ -15,11 +15,6 @@ namespace BatCheese.Repository.Wcf
         {
         }
 
-        public AgentServiceRepository(Func<AgentServiceClient> clientInitFunc) : base(clientInitFunc)
-        {
-        }
-
-
         public Task<ActivitiesToProcess> GetErrorBatchesAsync()
         {
             return this.Client.GetErrorBatchesAsync();

@@ -107,6 +107,7 @@
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.4.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IdentityModel" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -265,6 +266,10 @@
     <ProjectReference Include="..\BatCheese.Data\BatCheese.Data.csproj">
       <Project>{426BECBD-24EC-4654-A5F6-E5515608B770}</Project>
       <Name>BatCheese.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BatCheese.Domain\BatCheese.Domain.csproj">
+      <Project>{A5CC30B8-AEA6-43B9-BD9B-CFFB8AE8699D}</Project>
+      <Name>BatCheese.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\BatCheese.Repository\BatCheese.Repository.csproj">
       <Project>{6BE9E51F-04E7-48F8-AB92-59B750197DA2}</Project>
