@@ -2,15 +2,11 @@
 using BatCheese.Repository.Wcf;
 using Ninject;
 using Ninject.Activation;
-using Ninject.Extensions.Factory;
 using Ninject.Modules;
 using Ninject.Planning.Targets;
 using Ninject.Web.Common;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
-using System.Web;
 
 namespace BatCheese.Web.IOC
 {

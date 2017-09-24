@@ -48,6 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\IServerDbRepository.cs" />
+    <Compile Include="Data\ServerDbRepository.cs" />
     <Compile Include="DbRepository.cs" />
     <Compile Include="IDbRepository.cs" />
     <Compile Include="IWcfRepository.cs" />
@@ -60,9 +62,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\BatCheese.Data\BatCheese.Data.csproj">
       <Project>{426BECBD-24EC-4654-A5F6-E5515608B770}</Project>
